@@ -1,0 +1,14 @@
+# Byte-compiled / optimized files
+__pycache__/
+*.pyc
+
+# Virtual environments
+venv/
+env/
+
+# IDE specific files
+.vscode/
+.idea/
+
+# Dependency directories
+node_modules/
