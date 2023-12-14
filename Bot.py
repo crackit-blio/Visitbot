@@ -4,7 +4,6 @@ from time import sleep
 
 # List of proxies you obtained
 proxies = [
-    proxies = [
     '163.158.216.152:80',
     '58.176.46.248:80',
     '218.191.247.51:8380',
