@@ -91,11 +91,10 @@ proxies = [
     '137.135.166.225:8139',
     '137.135.166.225:8135',
     '218.205.80.8:80',
-    '122.193.14.104:80'
-]
+    '122.193.14.104:80']
 
     # Add more proxies as needed
-]
+
 
 url = "https://www.toprevenuegate.com/icj1hrt7pd?key=40e6de77327dfa02813c429680adef2f"
 num_visits = 1000
