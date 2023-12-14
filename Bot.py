@@ -3,8 +3,7 @@ import random
 from time import sleep
 
 # List of proxies you obtained
-proxies = [
-    '163.158.216.152:80',
+proxies = ['163.158.216.152:80',
     '58.176.46.248:80',
     '218.191.247.51:8380',
     '122.96.59.102:80',
@@ -92,26 +91,28 @@ proxies = [
     '137.135.166.225:8135',
     '218.205.80.8:80',
     '122.193.14.104:80']
-
-    # Add more proxies as needed
-
-
 url = "https://www.toprevenuegate.com/icj1hrt7pd?key=40e6de77327dfa02813c429680adef2f"
 num_visits = 1000
 visit_count = {}
 
-for _ in range(num_visits):
-    proxy = random.choice(proxies)  # Choosing a random proxy from your list
-    response = requests.get(url, proxies={"http": proxy})
-
-    if response.status_code == 200:
-        if proxy in visit_count:
-            visit_count[proxy] += 1
-        else:
-            visit_count[proxy] = 1
-
-        print(f"Visited {url} ({visit_count[proxy]}) from {proxy}")
-        sleep(1)
-    else:
+for i in range(num_visits):
+    random.shuffle(proxies)
+    for proxy in proxies:
+        try:
+            response = requests.get(url, proxies={"http": proxy}, timeout=5)  # Setting a timeout
+            if response.status_code == 200:
+                visit_count[proxy] = visit_count.get(proxy, 0) + 1
+                print(f"Visited {url} ({visit_count[proxy]}) from {proxy}")
+                sleep(1)
+                break  # Break the inner loop if the request is successful
+            else:
+                print(f"Failure {response.status_code} from {proxy}")
+                
+        except requests.RequestException as e:
+            print(f"Error during request from {proxy}: {str(e)}")
         sleep(5)
-        continue
+
+    else:
+        print("All proxies exhausted, end of try.")
+        break  # If all proxies are tried and none worked
+
